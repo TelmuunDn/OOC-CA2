@@ -71,7 +71,7 @@ public class User {
         return birthDate;
     }
 
-    public String email() {
+    public String getEmail() {
         return email;
     }
 
