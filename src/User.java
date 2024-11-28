@@ -8,7 +8,7 @@
  * @author telmuun
  */
 public class User {
-    // this patient information will utilized by te system to add or retreive patient data from the hospital db
+    // this user information will utilized by te system to add or retreive patient data from the database.
     
     // attributes
     private String firstName;
@@ -16,8 +16,8 @@ public class User {
     private String birthDate;
     private String email;
     private int phoneNumber;
+    private int grossIncome;
     private int userID;
-    
     
     // static attribute
     // static attributes are a class variable
@@ -26,29 +26,31 @@ public class User {
     
     private static int currentID = 1;
     // create 2 constructors
-    // one constructor will be the patient data
-    public User(String firstName, String lastName, String birthDate, String email, int phoneNumber){
+    // one constructor will be the user data
+    public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, int grossIncome){
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.grossIncome = grossIncome;
         this.userID = currentID; // static attribute value 1
         currentID++; // value 2
         
         System.out.println(firstName +" "+ lastName + " has a birthday on " + birthDate);
-        System.out.println("email: " + email);
+        System.out.println("Email: " + email);
         System.out.println("Phone Number: " + phoneNumber);
         System.out.println("USER ID: " + currentID);
     }
-    // constructor 2 will be when adding a patient to the db
-    public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, int userID){
-        // add a patient with an ID
+    // constructor 2 will be when adding a new user to the database
+    public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, int grossIncome, int userID){
+        // add a userwith and an ID
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.grossIncome = grossIncome;
         this.userID = userID;
         
         if (currentID <= userID){ // current id = 2
@@ -113,6 +115,14 @@ public class User {
 
     public static void setCurrentID(int currentID) {
         User.currentID = currentID;
+    }
+
+    public int getGrossIncome() {
+        return grossIncome;
+    }
+
+    public void setGrossIncome(int grossIncome) {
+        this.grossIncome = grossIncome;
     }
     
     
