@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-import static db_connection.DB_Connection.DB_URL;
-import static db_connection.DB_Connection.PASSWORD;
-import static db_connection.DB_Connection.USER;
+//import static db_connection.DB_Connection.DB_URL;
+//import static db_connection.DB_Connection.PASSWORD;
+//import static db_connection.DB_Connection.USER;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 import java.sql.Connection;

@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-import static DB_Connection.DB_URL;
-import static DB_Connection.USER;
-import static db_connection.DB_Connection.PASSWORD;
-import static db_connection.DB_Connection.TABLE;
+//import static DB_Connection.DB_URL;
+//import static DB_Connection.USER;
+//import static db_connection.DB_Connection.PASSWORD;
+//import static db_connection.DB_Connection.TABLE;
 
 import java.sql.SQLException;
 import java.sql.DriverManager;
@@ -16,7 +16,7 @@ import java.sql.Connection;
  *
  * @author telmuun
  */
-public class DatabaseWriter {
+public class DatabaseWriter extends DB_Connection{
     // this method will write information to the database
     
     public boolean addUser(User user) throws SQLException {
@@ -35,17 +35,18 @@ public class DatabaseWriter {
                             user.getPhoneNumber(),
                             user.getGrossIncome(),
                             user.getUserID()
-                            
-                    String sql1 = String.format("INSERT INTO " + TABLE2 + " VALUES ("
-                    + "'%s', '%s', '%s', '%s', %d, %d, %d);",
-                            user.getFirstName(),
-                            user.getLastName(),
-                            user.getBirthDate(),
-                            user.getEmail(),
-                            user.getPhoneNumber(),
-                            user.getGrossIncome(),
-                            user.getUserID()        
                     );
+                            
+//                    String sql1 = String.format("INSERT INTO " + TABLE2 + " VALUES ("
+//                    + "'%s', '%s', '%s', '%s', %d, %d, %d);",
+//                            user.getFirstName(),
+//                            user.getLastName(),
+//                            user.getBirthDate(),
+//                            user.getEmail(),
+//                            user.getPhoneNumber(),
+//                            user.getGrossIncome(),
+//                            user.getUserID()        
+//                    );
                 stmt.execute(sql);
                 return true;
        
