@@ -27,30 +27,30 @@ public class User {
     private static int currentID = 1;
     // create 2 constructors
     // one constructor will be the user data
-    public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, int grossIncome){
+    public User(String firstName, String lastName, String birthDate, String email, int phoneNumber){
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.grossIncome = grossIncome;
+        
         this.userID = currentID; // static attribute value 1
         currentID++; // value 2
         
-        System.out.println(firstName +" "+ lastName + " has a birthday on " + birthDate);
+        System.out.println("\n" + firstName +" "+ lastName + " has a birthday on " + birthDate);
         System.out.println("Email: " + email);
         System.out.println("Phone Number: " + phoneNumber);
         System.out.println("USER ID: " + currentID);
     }
     // constructor 2 will be when adding a new user to the database
-    public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, int grossIncome, int userID){
+    public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, int userID){
         // add a userwith and an ID
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.grossIncome = grossIncome;
+        
         this.userID = userID;
         
         if (currentID <= userID){ // current id = 2

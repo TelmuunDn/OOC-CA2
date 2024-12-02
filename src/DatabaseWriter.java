@@ -26,28 +26,28 @@ public class DatabaseWriter extends DB_Connection{
                Statement stmt = conn.createStatement();
                ){
                     
-                    String sql = String.format("INSERT INTO " + TABLE + " VALUES ("
-                    + "'%s', '%s', '%s', '%s', %d, %d, %d);",
+                    String sqlUser = String.format("INSERT INTO " + TABLE + " VALUES ("
+                    + "'%s', '%s', '%s', '%s', %d, %d);",
                             user.getFirstName(),
                             user.getLastName(),
                             user.getBirthDate(),
                             user.getEmail(),
                             user.getPhoneNumber(),
-                            user.getGrossIncome(),
+                            
                             user.getUserID()
                     );
                             
 //                    String sql1 = String.format("INSERT INTO " + TABLE2 + " VALUES ("
-//                    + "'%s', '%s', '%s', '%s', %d, %d, %d);",
+//                    + "'%s', '%s', '%s', '%s', %d, %d);",
 //                            user.getFirstName(),
 //                            user.getLastName(),
 //                            user.getBirthDate(),
 //                            user.getEmail(),
 //                            user.getPhoneNumber(),
-//                            user.getGrossIncome(),
+//                            
 //                            user.getUserID()        
 //                    );
-                stmt.execute(sql);
+                stmt.execute(sqlUser);
                 return true;
        
        
