@@ -10,5 +10,8 @@
 public interface Operation {
     // add
     // update
+    public void updateUserData();
+    
     // delete user data
+    public void deleteUserData();
 }

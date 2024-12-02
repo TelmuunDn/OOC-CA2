@@ -24,6 +24,8 @@ public class taxcalculator {
             // Over 70,044 * 8%
             //Total USC: €1,536.85/year.
 
+            
+            
         double usc = 0;
         int classA = 12012;
         int classB = 9283;
@@ -50,6 +52,9 @@ public class taxcalculator {
         
  
       return usc;
+    }
+
+    public taxcalculator() {
     }
  
      public double calculatePRSI(double annualIncome) {

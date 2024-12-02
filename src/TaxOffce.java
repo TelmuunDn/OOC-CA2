@@ -40,10 +40,11 @@ public class TaxOffce {
                 System.out.println("Please select from the following options: \n");
                 System.out.println("1. Insert a user record");
                 System.out.println("2. Read user data from the DB");
-                System.out.println("3. Exit");
+                System.out.println("3. Enter the tax calculator");
+                System.out.println("4. Exit");
                 System.out.println("\nEnter your choice: \n");
                 
-                // capture the user choice
+                // capture the user choice 
                 int choice = scanner.nextInt();
                 scanner.nextLine(); // add another line
                 
@@ -66,7 +67,7 @@ public class TaxOffce {
                         System.out.println("Phone Number: ");
                         int phoneNumber = scanner.nextInt();
                         
-                       
+                        
                         // collect all the user input
                         User newUser = new User(firstName,lastName, birthDate, email, phoneNumber);
                         // try adding the patient record 
@@ -104,7 +105,7 @@ public class TaxOffce {
                         }
                         break;
                         
-                    case 3:
+                    case 4:
                         // exit
                         System.out.println("Thank you for using our system");
                         System.out.println("Exiting....");
@@ -126,7 +127,7 @@ public class TaxOffce {
        
         // add
     
-    
+        
     }
     
     
