@@ -8,10 +8,28 @@
  * @author felip
  */
 public class taxcalculator {
-
-    // Total reductions (usc + prsi)
     
-    public double calculateUSC(double annualIncome) {
+    private double income;
+
+    public taxcalculator(double income) {
+        this.income = income;
+    }
+
+    
+    // getter and setter
+    
+    public double getIncome() {
+        return income;
+    }
+
+    public void setIncome(double income) {
+        this.income = income;
+    }
+    
+    
+    
+    
+    public double getcalculateUSC(double annualIncome) {
         
         //Income tax/PAYE, 
         //USC  (Universal Social Charge) 
@@ -24,8 +42,6 @@ public class taxcalculator {
             // Over 70,044 * 8%
             //Total USC: €1,536.85/year.
 
-            
-            
         double usc = 0;
         int classA = 12012;
         int classB = 9283;
@@ -50,32 +66,30 @@ public class taxcalculator {
             ///
         }
         
- 
       return usc;
-    }
-
-    public taxcalculator() {
-    }
- 
-     public double calculatePRSI(double annualIncome) {
-          
-        //PRSI
-            //Weekly salary = €50,000 ÷ 52 = €961.54
-            //PRSI = €961.54 × 4% = €38.46/week.
-            //Total PRSI: €38.46 × 52 = €2,000/year.
       
-       double PRSI;
-       double weeklyIncome = annualIncome / 52;
-       
-       if (weeklyIncome > 353){
-           PRSI = annualIncome * 0.04;
-           
-       }else{
-           PRSI = 0;
-       
-       }
-         
-         return PRSI;
-     }
+    }
+    
+    public double getcalculatePRSI(double annualIncome) {
+
+       //PRSI
+           //Weekly salary = €50,000 ÷ 52 = €961.54
+           //PRSI = €961.54 × 4% = €38.46/week.
+           //Total PRSI: €38.46 × 52 = €2,000/year.
+
+        double PRSI;
+        double weeklyIncome = annualIncome / 52;
+
+        if (weeklyIncome > 353){
+              PRSI = annualIncome * 0.04;
+
+        }else{
+            PRSI = 0;
+
+        }
+
+          return PRSI;
+    }
+     
     
 }
