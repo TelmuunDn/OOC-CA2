@@ -35,7 +35,7 @@ public class DatabaseSetup extends DB_Connection{
                         // query the db using the USE keyword
                         stmt.execute("USE " + DB_NAME + ";"); // database schema pointer
                         // create a query to insert into the database
-                        String sql = 
+                        String sqlUser = 
                                 // CREATE TABLE IF NOT EXISTS patient_data name VARCHAR(255)
                                 "CREATE TABLE IF NOT EXISTS " + TABLE + "("
                                 + "first_name VARCHAR(255),"
@@ -46,7 +46,21 @@ public class DatabaseSetup extends DB_Connection{
                                 + "id INT(10)"
                                 +");";
                         // take this query and execute it
-                        stmt.execute(sql);
+                        stmt.execute(sqlUser);
+                        
+                        String sqlAdmin = 
+                                // CREATE TABLE IF NOT EXISTS patient_data name VARCHAR(255)
+                                "CREATE TABLE IF NOT EXISTS " + TABLE2 + "("
+                                + "first_name VARCHAR(255),"
+                                + "last_name VARCHAR(255),"
+                                + "birthdate DATE," // YYYY-MM-DD format
+                                + "email VARCHAR(255),"
+                                + "phone_number INT(10),"
+                                + "id INT(10)"
+                                +");";
+                        // take this query and execute it
+                        stmt.execute(sqlAdmin);
+                        
                         return true;
                 
                 }catch(Exception e){

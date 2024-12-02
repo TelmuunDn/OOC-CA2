@@ -16,6 +16,7 @@ protected final static String PASSWORD = "password";
 // this schema name may or may not be created
 protected final static String DB_NAME = "tax_office";
 protected final static String TABLE = "user_data";
+protected final static String TABLE2 = "admin_data";
 
 // now we create the final database URL with the schema name
 protected final static String DB_URL = DB_BASE_URL + "/" + DB_NAME;
