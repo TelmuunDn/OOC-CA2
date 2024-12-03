@@ -49,10 +49,11 @@ public class DatabaseReader extends DB_Connection{
                 String birthdate = results.getString("birthdate"); // birthdate
                 String email = results.getString("email");
                 int phoneNumber = results.getInt("phone_number"); // patient id
+                String password = results.getString("password");
                 int id = results.getInt("id"); // patient id
             
                 // formate the output from the query and insert into collection
-                User user = new User(firstName, lastName, birthdate, email, phoneNumber, id);
+                User user = new User(firstName, lastName, birthdate, email, phoneNumber, password, id);
                 users.add(user);
                 
             }

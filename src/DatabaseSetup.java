@@ -42,7 +42,8 @@ public class DatabaseSetup extends DB_Connection{
                                 + "last_name VARCHAR(255),"
                                 + "birthdate DATE," // YYYY-MM-DD format
                                 + "email VARCHAR(255),"
-                                + "phone_number INT(10),"
+                                + "phone_number INT(12),"
+                                + "password VARCHAR(255),"
                                 + "id INT(10)"
                                 +");";
                         // take this query and execute it
@@ -55,7 +56,8 @@ public class DatabaseSetup extends DB_Connection{
                                 + "last_name VARCHAR(255),"
                                 + "birthdate DATE," // YYYY-MM-DD format
                                 + "email VARCHAR(255),"
-                                + "phone_number INT(10),"
+                                + "phone_number INT(12),"
+                                + "password VARCHAR(255),"
                                 + "id INT(10)"
                                 +");";
                         // take this query and execute it

@@ -27,13 +27,13 @@ public class DatabaseWriter extends DB_Connection{
                ){
                     
                     String sqlUser = String.format("INSERT INTO " + TABLE + " VALUES ("
-                    + "'%s', '%s', '%s', '%s', %d, %d);",
+                    + "'%s', '%s', '%s', '%s', %d, '%s', %d);",
                             user.getFirstName(),
                             user.getLastName(),
                             user.getBirthDate(),
                             user.getEmail(),
                             user.getPhoneNumber(),
-                            
+                            user.getPassword(),
                             user.getUserID()
                     );
                             

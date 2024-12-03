@@ -29,6 +29,7 @@ public class TaxOffce {
             //instantiating the write and reader for the db
             DatabaseWriter dbw = new DatabaseWriter(); // this will allow us to write to the db
             DatabaseReader dbr = new DatabaseReader(); // this will allow us to read from the db
+            UserLogin ul = new UserLogin(); // this will allow the users to login
             Scanner scanner = new Scanner(System.in); // this will capture the user input
             
             // we want to present the menu to the user and we want the user to interact as long as they please;
@@ -41,7 +42,8 @@ public class TaxOffce {
                 System.out.println("1. Insert a user record");
                 System.out.println("2. Read user data from the DB");
                 System.out.println("3. Enter the tax calculator");
-                System.out.println("4. Exit");
+                System.out.println("4. User Login");
+                System.out.println("5. Exit");
                 System.out.println("\nEnter your choice: \n");
                 
                 // capture the user choice 
@@ -64,12 +66,15 @@ public class TaxOffce {
                         String birthDate = scanner.nextLine();
                         System.out.println("Email:");
                         String email = scanner.nextLine();
+                        System.out.println("Password: ");
+                        String password = scanner.nextLine();
                         System.out.println("Phone Number: ");
                         int phoneNumber = scanner.nextInt();
                         
                         
+                        
                         // collect all the user input
-                        User newUser = new User(firstName,lastName, birthDate, email, phoneNumber);
+                        User newUser = new User(firstName,lastName, birthDate, email, phoneNumber, password);
                         // try adding the patient record 
                         // check if successful otherwise let the user know
                         if(dbw.addUser(newUser)){
@@ -88,24 +93,34 @@ public class TaxOffce {
                         if(users.isEmpty()){
                             System.out.println("No data was found");
                         }else{
-                            System.out.printf("%-5s | %-10s | %-10s | %-12s | %-15s | %-15s", "\nID", "First Name", "Last Name", "Birth Date", "Email", "Phone Number");
-                            System.out.println("\n---------------------------------------------------");
+                            System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s", "\nID", "First Name", "Last Name", "Birth Date", "Email", "Phone Number", "Password");
+                            System.out.println("\n----------------------------------------------------------------------------------------");
                             // print out all the patient records in to the table
                             // this will require iterating  therough the patients arraylist
                             for(User user: users){
-                                System.out.printf("%-5s | %-10s | %-10s | %-12s | %-15s | %-15s\n", 
+                                System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s\n", 
                                         user.getUserID(),
                                         user.getFirstName(),
                                         user.getLastName(),
                                         user.getBirthDate(),
                                         user.getEmail(),
-                                        user.getPhoneNumber()                                
+                                        user.getPhoneNumber(), 
+                                        user.getPassword()
                                 );
                             }   
                         }
                         break;
                         
                     case 4:
+                        
+                        
+                        ul.UserLoginAction();
+                        break;
+                        
+                        
+                        
+                        
+                    case 5:
                         // exit
                         System.out.println("Thank you for using our system");
                         System.out.println("Exiting....");

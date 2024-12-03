@@ -18,6 +18,7 @@ public class User {
     private int phoneNumber;
     private int grossIncome;
     private int userID;
+    private String password;
     
     // static attribute
     // static attributes are a class variable
@@ -27,12 +28,13 @@ public class User {
     private static int currentID = 1;
     // create 2 constructors
     // one constructor will be the user data
-    public User(String firstName, String lastName, String birthDate, String email, int phoneNumber){
+    public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, String password){
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.email = email;
         this.phoneNumber = phoneNumber;
+        this.password = password;
         
         this.userID = currentID; // static attribute value 1
         currentID++; // value 2
@@ -40,17 +42,18 @@ public class User {
         System.out.println("\n" + firstName +" "+ lastName + " has a birthday on " + birthDate);
         System.out.println("Email: " + email);
         System.out.println("Phone Number: " + phoneNumber);
+        System.out.println("Password: " + password);
         System.out.println("USER ID: " + currentID);
     }
     // constructor 2 will be when adding a new user to the database
-    public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, int userID){
+    public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, String password, int userID){
         // add a userwith and an ID
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        
+        this.password = password;
         this.userID = userID;
         
         if (currentID <= userID){ // current id = 2
@@ -123,6 +126,14 @@ public class User {
 
     public void setGrossIncome(int grossIncome) {
         this.grossIncome = grossIncome;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     
