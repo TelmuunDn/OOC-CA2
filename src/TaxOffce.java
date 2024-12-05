@@ -39,6 +39,13 @@ public class TaxOffce {
                 // like all menus, we need a couple of print statements to present to the user
                 System.out.println("\nThe tax calculation system (HAS)");
                 System.out.println("Please select from the following options: \n");
+                System.out.println("1. Login as User");
+                System.out.println("2. Register as User");
+                System.out.println("3. Login as Admin");
+                System.out.println("4. Exit");
+                System.out.println("\nEnter your choice: \n");
+                
+                
                 System.out.println("1. Insert a user record");
                 System.out.println("2. Read user data from the DB");
                 System.out.println("3. Enter the tax calculator");
@@ -54,8 +61,15 @@ public class TaxOffce {
                 // theres going to be 3 options
                 
                 switch(choice){
+                    
+                    case 1:
+                        
+                        
+                        ul.UserLoginAction();
+                        break;
+                        
                     // since we know its a numbr the cases will be numbers
-                    case 1: // if the user selects 1
+                    case 2: // if the user selects 2
                         //insert new data to the db
                         System.out.println("Enter user data: ");
                         System.out.println("First Name: ");
@@ -84,43 +98,94 @@ public class TaxOffce {
                         } 
                         break;
                         
-                    case 2:
-                        // read the data from the db
-                        ArrayList<User> users = dbr.getAllData();
-                        // retreive the data from the db, store it as the patients arraylist;
+                        case 3:
                         
-                        //check if empty
-                        if(users.isEmpty()){
-                            System.out.println("No data was found");
-                        }else{
-                            System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s", "\nID", "First Name", "Last Name", "Birth Date", "Email", "Phone Number", "Password");
-                            System.out.println("\n----------------------------------------------------------------------------------------");
-                            // print out all the patient records in to the table
-                            // this will require iterating  therough the patients arraylist
-                            for(User user: users){
-                                System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s\n", 
-                                        user.getUserID(),
-                                        user.getFirstName(),
-                                        user.getLastName(),
-                                        user.getBirthDate(),
-                                        user.getEmail(),
-                                        user.getPhoneNumber(), 
-                                        user.getPassword()
-                                );
-                            }   
-                        }
+                        // to make an admin action here
+//                        ul.AdminLoginAction();
+                        
+                            System.out.println("Welcome to the admin menu, please choose from below:\n");
+                            System.out.println("1. List all users and their information");
+                            System.out.println("2. Change user information");
+                            System.out.println("3. Change admin information");
+                            System.out.println("4. Remove a user from the system");
+                            System.out.println("5. Review the database history");
+                            System.out.println("6. Exit");
+                            System.out.println("\nEnter your choice: \n");
+                            switch(choice){
+                                case 1:
+                                                // read the data from the db
+                                    ArrayList<User> users = dbr.getAllData();
+                                    // retreive the data from the db, store it as the patients arraylist;
+
+                                    //check if empty
+                                    if(users.isEmpty()){
+                                        System.out.println("No data was found");
+                                    }else{
+                                        System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s", "\nID", "First Name", "Last Name", "Birth Date", "Email", "Phone Number", "Password");
+                                        System.out.println("\n----------------------------------------------------------------------------------------");
+                                        // print out all the patient records in to the table
+                                        // this will require iterating  therough the patients arraylist
+                                        for(User user: users){
+                                            System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s\n", 
+                                                    user.getUserID(),
+                                                    user.getFirstName(),
+                                                    user.getLastName(),
+                                                    user.getBirthDate(),
+                                                    user.getEmail(),
+                                                    user.getPhoneNumber(), 
+                                                    user.getPassword()
+                                            );
+                                        }   
+                                    }
+                                    break;
+                                
+                                case 2:
+                                    System.out.println("Work in progress");
+                                    break;
+                                    
+                                case 3:
+                                    System.out.println("work in progress");
+                                    break;
+                                    
+                                case 4:
+                                    System.out.println("work in progress");
+                                    break;
+                                    
+                                case 5:
+                                    System.out.println("work in progress");
+                                    break;
+                                    
+                                case 6:
+                                    // exit
+                                    System.out.println("Thank you for using our system");
+                                    System.out.println("Exiting....");
+                                    scanner.close(); // scanner is our IO stream we dont want the user to be able to interact with the system when its closed
+                                    return;
+
+                                default:
+                                    System.out.println("Wrong input, please select form the menu choices");
+                                    
+                                
+                                    
+                                    
+                            
+                            
+                            
+                            
+                            
+                            
+                            }
+                            
                         break;
+                        
+                    
+                        
+                    
+                        
+                        
+                        
                         
                     case 4:
-                        
-                        
-                        ul.UserLoginAction();
-                        break;
-                        
-                        
-                        
-                        
-                    case 5:
                         // exit
                         System.out.println("Thank you for using our system");
                         System.out.println("Exiting....");
