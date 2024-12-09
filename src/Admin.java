@@ -9,8 +9,8 @@
  */
 public class Admin{
     
-    private String adminName = "CCT";
-    private String adminPassword = "Dublin";
+    private String adminName; //CCT
+    private String adminPassword; //"Dublin";
 
     public String getAdminName() {
         return adminName;

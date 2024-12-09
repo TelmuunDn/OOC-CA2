@@ -22,6 +22,9 @@ import java.util.Scanner;
  */
 public class UserLogin extends DB_Connection{
     
+    private String email;
+    private String password;
+    
     public boolean UserLoginAction() throws SQLException {                                              
 
        Scanner sc = new Scanner(System.in);
@@ -31,8 +34,7 @@ public class UserLogin extends DB_Connection{
             Statement stmt = conn.createStatement()){
             
             
-                   String email;
-                   String password;
+                   
 
 
                    System.out.println("\nPlease enter your email:");
@@ -48,16 +50,6 @@ public class UserLogin extends DB_Connection{
                             password
                     );
                             
-//                    String sql1 = String.format("INSERT INTO " + TABLE2 + " VALUES ("
-//                    + "'%s', '%s', '%s', '%s', %d, %d);",
-//                            user.getFirstName(),
-//                            user.getLastName(),
-//                            user.getBirthDate(),
-//                            user.getEmail(),
-//                            user.getPhoneNumber(),
-//                            
-//                            user.getUserID()        
-//                    );
                 try (ResultSet rs = stmt.executeQuery(sqlUser)) {
                 // Check if a result exists
                 if (rs.next()) {
@@ -75,7 +67,20 @@ public class UserLogin extends DB_Connection{
            return false;
        }
        
+                
 
-    } 
     }
+       
+       
+    }
+    
+    public String getEmail(){
+        return email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+    
+    
 }

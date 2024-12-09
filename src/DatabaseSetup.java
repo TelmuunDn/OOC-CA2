@@ -53,10 +53,14 @@ public class DatabaseSetup extends DB_Connection{
                                 // CREATE TABLE IF NOT EXISTS patient_data name VARCHAR(255)
                                 "CREATE TABLE IF NOT EXISTS " + TABLE2 + "("
                                 + "admin_name VARCHAR(255),"
-                                + "admin_password VARCHAR(255),"
+                                + "admin_password VARCHAR(255)"
                                 +");";
                         // take this query and execute it
                         stmt.execute(sqlAdmin);
+                        
+                        String sqlAddAdmin = "INSERT INTO " + TABLE2 + " (admin_name, admin_password) VALUES ('CCT','Dublin');";
+                        stmt.execute(sqlAddAdmin);
+                                
                         
                         return true;
                 
