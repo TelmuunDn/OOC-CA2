@@ -16,6 +16,9 @@ import java.util.Scanner;
  */
 public class AdminLogin extends DB_Connection{
     
+    private String adminName;
+    private String adminPassword;
+    
     public boolean AdminLoginAction() throws SQLException {                                              
 
        Scanner sc = new Scanner(System.in);
@@ -25,8 +28,7 @@ public class AdminLogin extends DB_Connection{
             Statement stmt = conn.createStatement()){
             
             
-                   String adminName;
-                   String adminPassword;
+                   
 
 
                    System.out.println("\nPlease enter your Admin username:");
@@ -35,8 +37,7 @@ public class AdminLogin extends DB_Connection{
                    adminPassword = sc.nextLine();
            
            
-                    String sqlAdmin = String.format("SELECT * FROM " + TABLE + " WHERE admin_name = " + "'%s'" + " AND admin_password = "
-                    + "'%s';",
+                    String sqlAdmin = String.format("SELECT * FROM " + TABLE2 + " WHERE admin_name = '%s' AND admin_password = '%s';",
                             //"SELECT * FROM user_data WHERE username = ? AND password = ?"
                             adminName,
                             adminPassword

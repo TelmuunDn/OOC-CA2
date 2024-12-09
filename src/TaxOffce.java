@@ -34,6 +34,7 @@ public class TaxOffce {
             DatabaseReader dbr = new DatabaseReader(); // this will allow us to read from the db
             UserLogin ul = new UserLogin(); // this will allow the users to login
             Scanner scanner = new Scanner(System.in); // this will capture the user input
+            AdminLogin al = new AdminLogin();
             
             // we want to present the menu to the user and we want the user to interact as long as they please;
             
@@ -63,7 +64,7 @@ public class TaxOffce {
                         
                             System.out.println("Please find below your user  information:");
                             ArrayList<User> userData = ul.getUserData();
-                            System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s", "\nID", "First Name", "Last Name", "Birth Date", "Email", "Phone Number", "Password");
+                            System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s", "\nID", "First Name", "Last Name", "Birth Date", "Email", "Password", "Phone Number");
                                         System.out.println("\n----------------------------------------------------------------------------------------");
                                         // print out all the patient records in to the table
                                         // this will require iterating  therough the patients arraylist
@@ -73,9 +74,9 @@ public class TaxOffce {
                                                     user.getFirstName(),
                                                     user.getLastName(),
                                                     user.getBirthDate(),
-                                                    user.getEmail(),
-                                                    user.getPhoneNumber(), 
-                                                    user.getPassword()
+                                                    user.getEmail(), 
+                                                    user.getPassword(),
+                                                    user.getPhoneNumber()
                                             );
                                         } 
                             System.out.println("\n1. Change own information");
@@ -188,9 +189,9 @@ public class TaxOffce {
                         case 3:
                         
                         // to make an admin action here
-//                        ul.AdminLoginAction();
+                            if(al.AdminLoginAction()){
                         
-                            System.out.println("Welcome to the admin menu, please choose from below:\n");
+                            System.out.println("\nWelcome to the admin menu, please choose from below:\n");
                             System.out.println("1. List all users and their information");
                             System.out.println("2. Change user information");
                             System.out.println("3. Change admin information");
@@ -210,7 +211,7 @@ public class TaxOffce {
                                     //check if empty
                                     if(users.isEmpty()){
                                         System.out.println("No data was found");
-                                        flag = false;
+                                        
                                     }else{
                                         System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s", "\nID", "First Name", "Last Name", "Birth Date", "Email", "Phone Number", "Password");
                                         System.out.println("\n----------------------------------------------------------------------------------------");
@@ -228,20 +229,78 @@ public class TaxOffce {
                                             );
                                         }   
                                     }
+                                    flag = false;
                                     break;
                                 
                                 case 2:
-                                    System.out.println("Work in progress 2");
+                                    int userID;
+                                    System.out.println("\nChanging user data...Please stand by");
+                                    
+                                    System.out.println("Please enter the USER ID of the target user:");
+                                    userID = scanner.nextInt();
+                                    //insert new data to the db
+                                    System.out.println("Enter user data for user ID-" + userID);
+                                    scanner.nextLine();
+                                    System.out.println("Please enter the new First Name for user ID-" + userID);
+                                    firstName = scanner.nextLine(); // name of the user
+                                    System.out.println("Please enter the new Last Name for user ID-" + userID);
+                                    lastName = scanner.nextLine();
+                                    System.out.println("Please enter the new Birthdate for user ID-" + userID);
+                                    System.out.println("Birthdate: YYYY-MM-DD format");
+                                    birthDate = scanner.nextLine();
+                                    System.out.println("Please enter the new Email for user ID-" + userID);
+                                    email = scanner.nextLine(); 
+                                    System.out.println("Please enter the new Password for user ID-" + userID);
+                                    password = scanner.nextLine();
+                                    System.out.println("Please enter the new Phone Number for user ID-" + userID);
+                                    phoneNumber = scanner.nextInt();
+                                    
+                                    
+                                    User userChange = new User(firstName,lastName, birthDate, email, phoneNumber, password);
+                                    
+                                    if(dbw.changeUserByAdmin(userChange, userID)){
+                                        System.out.println("User information updated successfully");
+                                        flag = false;
+                                    }else{
+                                        System.out.println("Unable to add user to table, please check all inputs, try again");
+                                        choice = scanner.nextInt();
+                                        flag = false;
+                                    }
+                                    
+                                    
+                                    
+                                    
                                     flag = false;
                                     break;
                                     
                                 case 3:
-                                    System.out.println("work in progress 3");
+                                                                              
+                                    System.out.println("Please insert the new Admin Username:");
+                                    scanner.nextLine();
+                                    String adminName = scanner.nextLine();
+                                    
+                                    System.out.println("Please insert the new Admin Password:");
+                                    String adminPassword = scanner.nextLine();
+                                    
+                                    
+                                    if(dbw.changeAdmin(adminName, adminPassword)){
+                                        System.out.println("Your new username is: " + adminName);
+                                        System.out.println("Your new password is: " + adminPassword);
+                                    }else{
+                                        System.out.println("Something went wrong, please try again!");}
+                                    
                                     flag = false;
                                     break;
                                     
                                 case 4:
-                                    System.out.println("work in progress 4");
+                                    System.out.println("Please insert the User ID of the target to delete: ");
+                                    userID = scanner.nextInt();
+                                    
+                                    if(dbw.removeUser(userID)){
+                                        System.out.println(userID + " has been successfully deleted from the database...");
+                                    }else{
+                                        System.out.println("Error, please check your input and try again...");
+                                    }
                                     flag = false;
                                     break;
                                     
@@ -253,8 +312,8 @@ public class TaxOffce {
                                 case 6:
                                     // exit
                                     System.out.println("Thank you for using our system");
-                                    System.out.println("Exiting....");
-                                    scanner.close(); // scanner is our IO stream we dont want the user to be able to interact with the system when its closed
+                                    System.out.println("Returning to main menu....");
+                                    flag = false;
                                     break;
 
                                 default:
@@ -262,7 +321,11 @@ public class TaxOffce {
                                     flag = false;
 
                             }
+                            }else{
                             
+                            System.out.println("TRY AGAIN!");
+                            flag = false;
+                        }
                         break;
                         
  

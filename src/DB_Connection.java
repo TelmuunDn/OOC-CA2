@@ -17,6 +17,7 @@ protected final static String PASSWORD = "ooc2023";
 protected final static String DB_NAME = "tax_office";
 protected final static String TABLE = "user_data";
 protected final static String TABLE2 = "admin_data";
+protected final static String TABLE3 = "user_data_history";
 
 // now we create the final database URL with the schema name
 protected final static String DB_URL = DB_BASE_URL + "/" + DB_NAME;

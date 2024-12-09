@@ -58,10 +58,64 @@ public class DatabaseSetup extends DB_Connection{
                         // take this query and execute it
                         stmt.execute(sqlAdmin);
                         
-                        String sqlAddAdmin = "INSERT INTO " + TABLE2 + " (admin_name, admin_password) VALUES ('CCT','Dublin');";
+                        String sqlAddAdmin = "INSERT INTO " + TABLE2 + " (admin_name, admin_password) "
+                                + "SELECT 'CCT', 'Dublin' WHERE NOT EXISTS ( SELECT 1 FROM " + TABLE2 
+                                + " WHERE admin_name = 'CCT' AND admin_password = 'Dublin');";
                         stmt.execute(sqlAddAdmin);
                                 
                         
+                        String sqlAddUserHistory = 
+                                "CREATE TABLE IF NOT EXISTS tax_office.user_data_history (\n" +
+                                "    change_id BIGINT AUTO_INCREMENT PRIMARY KEY, -- Unique ID for each change\n" +
+                                "    action ENUM('insert', 'update', 'delete') NOT NULL, -- Type of operation\n" +
+                                "    change_timestamp DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, -- Time of the change\n" +
+                                "    user_id INT NOT NULL, -- Assuming user_data has a primary key column named 'id'\n" +
+                                "    old_data JSON DEFAULT NULL, -- Store old values (for updates and deletes)\n" +
+                                "    new_data JSON DEFAULT NULL -- Store new values (for inserts and updates)\n" +
+                                ") ENGINE=InnoDB;";
+                        stmt.execute(sqlAddUserHistory);
+                        
+                        String sqlHistoryTriggers = 
+                                "DELIMITER $$\n" +
+                                "\n" +
+                                "-- Trigger for INSERT\n" +
+                                "CREATE TRIGGER tax_office.user_data_after_insert\n" +
+                                "AFTER INSERT ON tax_office.user_data\n" +
+                                "FOR EACH ROW\n" +
+                                "BEGIN\n" +
+                                "    INSERT INTO tax_office.user_data_history (action, user_id, new_data)\n" +
+                                "    VALUES ('insert', NEW.id, JSON_OBJECT('id', NEW.id, 'column1', NEW.column1, 'column2', NEW.column2)); -- Replace column names as needed\n" +
+                                "END$$\n" +
+                                "\n" +
+                                "-- Trigger for UPDATE\n" +
+                                "CREATE TRIGGER tax_office.user_data_after_update\n" +
+                                "AFTER UPDATE ON tax_office.user_data\n" +
+                                "FOR EACH ROW\n" +
+                                "BEGIN\n" +
+                                "    INSERT INTO tax_office.user_data_history (action, user_id, old_data, new_data)\n" +
+                                "    VALUES (\n" +
+                                "        'update',\n" +
+                                "        OLD.id,\n" +
+                                "        JSON_OBJECT('id', OLD.id, 'column1', OLD.column1, 'column2', OLD.column2), -- Replace column names as needed\n" +
+                                "        JSON_OBJECT('id', NEW.id, 'column1', NEW.column1, 'column2', NEW.column2)  -- Replace column names as needed\n" +
+                                "    );\n" +
+                                "END$$\n" +
+                                "\n" +
+                                "-- Trigger for DELETE\n" +
+                                "CREATE TRIGGER tax_office.user_data_before_delete\n" +
+                                "BEFORE DELETE ON tax_office.user_data\n" +
+                                "FOR EACH ROW\n" +
+                                "BEGIN\n" +
+                                "    INSERT INTO tax_office.user_data_history (action, user_id, old_data)\n" +
+                                "    VALUES (\n" +
+                                "        'delete',\n" +
+                                "        OLD.id,\n" +
+                                "        JSON_OBJECT('id', OLD.id, 'column1', OLD.column1, 'column2', OLD.column2) -- Replace column names as needed\n" +
+                                "    );\n" +
+                                "END$$\n" +
+                                "\n" +
+                                "DELIMITER ;";
+                        //stmt.execute(sqlHistoryTriggers);
                         return true;
                 
                 }catch(Exception e){
