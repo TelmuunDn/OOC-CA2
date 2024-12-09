@@ -11,8 +11,8 @@ public abstract class DB_Connection {
 // this is the database connection information, all of our database information used to perform CRUD operations will rely on this connection
 
 protected final static String DB_BASE_URL = "jdbc:mysql://localhost";
-protected final static String USER = "root";
-protected final static String PASSWORD = "password";
+protected final static String USER = "ooc2023";
+protected final static String PASSWORD = "ooc2023";
 // this schema name may or may not be created
 protected final static String DB_NAME = "tax_office";
 protected final static String TABLE = "user_data";

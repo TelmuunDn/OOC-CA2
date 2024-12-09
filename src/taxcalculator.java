@@ -11,9 +11,7 @@ public class taxcalculator {
     
     private double income;
 
-    public taxcalculator(double income) {
-        this.income = income;
-    }
+   
 
     
     // getter and setter

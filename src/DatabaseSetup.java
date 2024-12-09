@@ -44,7 +44,7 @@ public class DatabaseSetup extends DB_Connection{
                                 + "email VARCHAR(255),"
                                 + "phone_number INT(12),"
                                 + "password VARCHAR(255),"
-                                + "id INT(10)"
+                                + "id INT AUTO_INCREMENT PRIMARY KEY"
                                 +");";
                         // take this query and execute it
                         stmt.execute(sqlUser);

@@ -23,9 +23,8 @@ public class User {
     // static attribute
     // static attributes are a class variable
     // it will be shared by all the objects within the class
-    // currentId this will be used to generate new ID values to patients and check current ids 
     
-    private static int currentID = 1;
+    
     // create 2 constructors
     // one constructor will be the user data
     public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, String password){
@@ -36,14 +35,13 @@ public class User {
         this.phoneNumber = phoneNumber;
         this.password = password;
         
-        this.userID = currentID; // static attribute value 1
-        currentID++; // value 2
+        
         
         System.out.println("\n" + firstName +" "+ lastName + " has a birthday on " + birthDate);
         System.out.println("Email: " + email);
         System.out.println("Phone Number: " + phoneNumber);
         System.out.println("Password: " + password);
-        System.out.println("USER ID: " + currentID);
+        
     }
     // constructor 2 will be when adding a new user to the database
     public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, String password, int userID){
@@ -56,9 +54,7 @@ public class User {
         this.password = password;
         this.userID = userID;
         
-        if (currentID <= userID){ // current id = 2
-            currentID = userID +1; // this will increment the current ID
-        }
+        
     }
     
     
@@ -88,9 +84,7 @@ public class User {
         return userID;
     }
 
-    public static int getCurrentID() {
-        return currentID;
-    }
+    
 
     public void setFirstName(String firstName) {
         this.firstName = firstName;
@@ -116,9 +110,7 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
-    public static void setCurrentID(int currentID) {
-        User.currentID = currentID;
-    }
+   
 
     public int getGrossIncome() {
         return grossIncome;
