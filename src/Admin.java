@@ -7,6 +7,23 @@
  *
  * @author telmuun
  */
-//public class Admin extends User {
+public class Admin{
     
-//}
+    private String adminName = "CCT";
+    private String adminPassword = "Dublin";
+
+    public String getAdminName() {
+        return adminName;
+    }
+
+    public String getAdminPassword() {
+        return adminPassword;
+    }
+    
+    
+
+    
+    
+    
+    
+}

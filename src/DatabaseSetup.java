@@ -52,13 +52,8 @@ public class DatabaseSetup extends DB_Connection{
                         String sqlAdmin = 
                                 // CREATE TABLE IF NOT EXISTS patient_data name VARCHAR(255)
                                 "CREATE TABLE IF NOT EXISTS " + TABLE2 + "("
-                                + "first_name VARCHAR(255),"
-                                + "last_name VARCHAR(255),"
-                                + "birthdate DATE," // YYYY-MM-DD format
-                                + "email VARCHAR(255),"
-                                + "phone_number INT(12),"
-                                + "password VARCHAR(255),"
-                                + "id INT(10)"
+                                + "admin_name VARCHAR(255),"
+                                + "admin_password VARCHAR(255),"
                                 +");";
                         // take this query and execute it
                         stmt.execute(sqlAdmin);

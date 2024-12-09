@@ -46,12 +46,7 @@ public class TaxOffce {
                 System.out.println("\nEnter your choice: \n");
                 
                 
-                System.out.println("1. Insert a user record");
-                System.out.println("2. Read user data from the DB");
-                System.out.println("3. Enter the tax calculator");
-                System.out.println("4. User Login");
-                System.out.println("5. Exit");
-                System.out.println("\nEnter your choice: \n");
+                
                 
                 // capture the user choice 
                 int choice = scanner.nextInt();
@@ -66,6 +61,15 @@ public class TaxOffce {
                         
                         
                         ul.UserLoginAction();
+                        
+                        System.out.println("1. View own information");
+                        System.out.println("2. Change own information");
+                        System.out.println("3. Enter the tax calculator");
+                        System.out.println("4. Exit");
+                        System.out.println("\nEnter your choice: \n");
+                        
+                        switch(choice){}
+                        
                         break;
                         
                     // since we know its a numbr the cases will be numbers

@@ -37,16 +37,17 @@ public class DatabaseWriter extends DB_Connection{
                             user.getUserID()
                     );
                             
-//                    String sql1 = String.format("INSERT INTO " + TABLE2 + " VALUES ("
-//                    + "'%s', '%s', '%s', '%s', %d, %d);",
-//                            user.getFirstName(),
-//                            user.getLastName(),
-//                            user.getBirthDate(),
-//                            user.getEmail(),
-//                            user.getPhoneNumber(),
-//                            
-//                            user.getUserID()        
-//                    );
+                    String sqlAdmin = String.format("INSERT INTO " + TABLE2 + " VALUES ("
+                    + "'%s', '%s');",
+                            user.getFirstName(),
+                            
+                            user.getLastName(),
+                            user.getBirthDate(),
+                            user.getEmail(),
+                            user.getPhoneNumber(),
+                            
+                            user.getUserID()        
+                    );
                 stmt.execute(sqlUser);
                 return true;
        
