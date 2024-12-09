@@ -19,6 +19,9 @@ public class TaxOffce {
     
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException{
     
+        int choice;
+        boolean flag = true;
+        
         // using the db setup class we can check if the operation went ok
         if(DatabaseSetup.setupDB() ){
             // if after we run the setupdb method all is ok
@@ -34,7 +37,7 @@ public class TaxOffce {
             
             // we want to present the menu to the user and we want the user to interact as long as they please;
             
-            while(true){
+            do{
                 
                 // like all menus, we need a couple of print statements to present to the user
                 System.out.println("\nThe tax calculation system (HAS)");
@@ -44,13 +47,10 @@ public class TaxOffce {
                 System.out.println("3. Login as Admin");
                 System.out.println("4. Exit");
                 System.out.println("\nEnter your choice: \n");
-                
-                
-                
+
                 
                 // capture the user choice 
-                int choice = scanner.nextInt();
-                scanner.nextLine(); // add another line
+                choice = scanner.nextInt();
                 
                 // take in the user choice ad provide a functionality according to the user selection
                 // theres going to be 3 options
@@ -59,27 +59,34 @@ public class TaxOffce {
                     
                     case 1:
                         
+                        if (ul.UserLoginAction()){
                         
-                        ul.UserLoginAction();
-                        
-                        System.out.println("1. View own information");
-                        System.out.println("2. Change own information");
-                        System.out.println("3. Enter the tax calculator");
-                        System.out.println("4. Exit");
-                        System.out.println("\nEnter your choice: \n");
-                        
-                        switch(choice){}
-                        
+                            System.out.println("1. View own information");
+                            System.out.println("2. Change own information");
+                            System.out.println("3. Enter the tax calculator");
+                            System.out.println("4. Exit");
+                            System.out.println("\nEnter your choice: \n");
+                            scanner.nextLine();
+                            choice = scanner.nextInt();
+                                                
+                        }else{
+                            
+                            System.out.println("Invalid!!!!");
+                            flag = false;
+                        }
+                                     
                         break;
                         
                     // since we know its a numbr the cases will be numbers
                     case 2: // if the user selects 2
                         //insert new data to the db
-                        System.out.println("Enter user data: ");
-                        System.out.println("First Name: ");
-                        String firstName =scanner.nextLine(); // name of the patient
-                        System.out.println("Last Name: ");
-                        String lastName =scanner.nextLine();
+                        System.out.println("Enter user data");
+                        System.out.println("First Name:");
+                        String firstName = scanner.nextLine(); // name of the patient
+                        
+                        System.out.println("Last Name:");
+                        String lastName = scanner.nextLine();
+                        
                         System.out.println("Birthdate: YYYY-MM-DD format");
                         String birthDate = scanner.nextLine();
                         System.out.println("Email:");
@@ -97,8 +104,11 @@ public class TaxOffce {
                         // check if successful otherwise let the user know
                         if(dbw.addUser(newUser)){
                             System.out.println("User added successfully");
+                            flag = false;
                         }else{
-                            System.out.println("Unable to add user to table, please check all inputs");                        
+                            System.out.println("Unable to add user to table, please check all inputs, try again");
+                            choice = scanner.nextInt();
+                            flag = false;
                         } 
                         break;
                         
@@ -115,15 +125,19 @@ public class TaxOffce {
                             System.out.println("5. Review the database history");
                             System.out.println("6. Exit");
                             System.out.println("\nEnter your choice: \n");
+                            scanner.nextLine();
+                            choice = scanner.nextInt();
+                            
                             switch(choice){
                                 case 1:
-                                                // read the data from the db
+                                    // read the data from the db
                                     ArrayList<User> users = dbr.getAllData();
                                     // retreive the data from the db, store it as the patients arraylist;
 
                                     //check if empty
                                     if(users.isEmpty()){
                                         System.out.println("No data was found");
+                                        flag = false;
                                     }else{
                                         System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s", "\nID", "First Name", "Last Name", "Birth Date", "Email", "Phone Number", "Password");
                                         System.out.println("\n----------------------------------------------------------------------------------------");
@@ -144,19 +158,23 @@ public class TaxOffce {
                                     break;
                                 
                                 case 2:
-                                    System.out.println("Work in progress");
+                                    System.out.println("Work in progress 2");
+                                    flag = false;
                                     break;
                                     
                                 case 3:
-                                    System.out.println("work in progress");
+                                    System.out.println("work in progress 3");
+                                    flag = false;
                                     break;
                                     
                                 case 4:
-                                    System.out.println("work in progress");
+                                    System.out.println("work in progress 4");
+                                    flag = false;
                                     break;
                                     
                                 case 5:
-                                    System.out.println("work in progress");
+                                    System.out.println("work in progress 5");
+                                    flag = false;
                                     break;
                                     
                                 case 6:
@@ -164,30 +182,16 @@ public class TaxOffce {
                                     System.out.println("Thank you for using our system");
                                     System.out.println("Exiting....");
                                     scanner.close(); // scanner is our IO stream we dont want the user to be able to interact with the system when its closed
-                                    return;
 
                                 default:
                                     System.out.println("Wrong input, please select form the menu choices");
-                                    
-                                
-                                    
-                                    
-                            
-                            
-                            
-                            
-                            
-                            
+                                    flag = false;
+
                             }
                             
                         break;
                         
-                    
-                        
-                    
-                        
-                        
-                        
+ 
                         
                     case 4:
                         // exit
@@ -198,33 +202,17 @@ public class TaxOffce {
                         
                     default:
                         System.out.println("Wrong input, please select form the menu choices");
+                        flag = false;
                 
                 }
  
-            }
-   
-        } else{
+            }while(!flag);
+
+        }else{
             // there is an issue connecting to the db or creating the schema
             System.out.println("There was a problem creating or connecting to the db... \n Please check db credentials");
-            return;
         }
-       
-        // add
-    
-        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    }   
-    
+}
+
 
