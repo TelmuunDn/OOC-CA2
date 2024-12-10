@@ -4,17 +4,19 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/DatabaseSetup.java</file>
-            <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/DatabaseReader.java</file>
-            <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/AdminLogin.java</file>
-            <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/History.java</file>
             <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/DB_Connection.java</file>
             <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/Admin.java</file>
             <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/Operation.java</file>
             <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/User.java</file>
             <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/UserLogin.java</file>
             <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/DatabaseWriter.java</file>
-            <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/TaxOffce.java</file>
             <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/regexvalidation.java</file>
+            <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/styleOutput.java</file>
+            <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/taxcalculator.java</file>
+            <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/DatabaseReader.java</file>
+            <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/AdminLogin.java</file>
+            <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/History.java</file>
+            <file>file:/E:/CCT/JAVA%20projects/OOC_DB%20-%20For%20team/OOC-CA2/src/TaxOffce.java</file>
         </group>
     </open-files>
 </project-private>

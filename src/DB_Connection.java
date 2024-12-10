@@ -8,16 +8,18 @@
  * @author telmuun
  */
 public abstract class DB_Connection {
-// this is the database connection information, all of our database information used to perform CRUD operations will rely on this connection
+// the following is the basic database connection information.
+// we will use these variables to continually connect and write to the database.
 
+// this way it is scalable coding as we dont have to worry about our code in case any of the SQL server information changes in the future
 protected final static String DB_BASE_URL = "jdbc:mysql://localhost";
 protected final static String USER = "ooc2023";
 protected final static String PASSWORD = "ooc2023";
-// this schema name may or may not be created
+// the schema name and the table names that we will need
 protected final static String DB_NAME = "tax_office";
 protected final static String TABLE = "user_data";
 protected final static String TABLE2 = "admin_data";
-protected final static String TABLE3 = "user_data_history";
+
 
 // now we create the final database URL with the schema name
 protected final static String DB_URL = DB_BASE_URL + "/" + DB_NAME;

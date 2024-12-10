@@ -8,6 +8,9 @@
  * @author telmuun
  */
 public class Admin{
+    // simple admin class that is private
+    // and we can get the appropriate information with the get methods
+    // no need for setters as we do not want some attacker to set and change our variable here for a possible attack
     
     private String adminName; //CCT
     private String adminPassword; //"Dublin";

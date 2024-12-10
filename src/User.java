@@ -8,7 +8,7 @@
  * @author telmuun
  */
 public class User {
-    // this user information will utilized by te system to add or retreive patient data from the database.
+    // user class that contains all the appropriate attributes, constructors and getters and setters.
     
     // attributes
     private String firstName;
@@ -19,14 +19,8 @@ public class User {
     private int grossIncome;
     private int userID;
     private String password;
-    
-    // static attribute
-    // static attributes are a class variable
-    // it will be shared by all the objects within the class
-    
-    
-    // create 2 constructors
-    // one constructor will be the user data
+        
+    // the first constructor is to construct a user without using inputing their user ID
     public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, String password){
         this.firstName = firstName;
         this.lastName = lastName;
@@ -36,16 +30,16 @@ public class User {
         this.password = password;
         
         
-        
+        // print an appropriate message containing the user information
         System.out.println("\n" + firstName +" "+ lastName + " has a birthday on " + birthDate);
         System.out.println("Email: " + email);
         System.out.println("Phone Number: " + phoneNumber);
         System.out.println("Password: " + password);
         
     }
-    // constructor 2 will be when adding a new user to the database
+    // the second constructor inclued the user ID when we want to manually set the user ID to our desired value
     public User(String firstName, String lastName, String birthDate, String email, int phoneNumber, String password, int userID){
-        // add a userwith and an ID
+        
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
