@@ -95,9 +95,9 @@ public class TaxOffce {
                                     System.out.println("Enter user data");
                                     scanner.nextLine();
                                     System.out.println("First Name:");
-                                    String firstName = scanner.nextLine(); // name of the user
+                                    String firstName = regexvalidation.askForFirstName(); // name of the user
                                     System.out.println("Last Name:");
-                                    String lastName = scanner.nextLine();
+                                    String lastName = regexvalidation.askForSecondName();
 
                                     System.out.println("Birthdate: YYYY-MM-DD format");
                                     String birthDate = scanner.nextLine();
