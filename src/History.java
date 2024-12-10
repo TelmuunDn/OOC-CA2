@@ -32,7 +32,7 @@ public class History {
     }
 
     public int getTaskID() {
-        return taskID;
+        return taskID++;
     }
 
     public String getTableName() {
