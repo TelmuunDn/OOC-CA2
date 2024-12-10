@@ -22,13 +22,13 @@ public class History {
     
     public History(){}
 
-    public History(int taskID, String tableName, String details) {
+    public History(String tableName, String details) {
         this.taskID = currentTaskID;
         this.tableName = tableName;
         this.timeStamp = new SimpleDateFormat("yyyy/MM/dd--HH:mm:ss").format(new java.util.Date());
         this.details = details;
         
-        currentTaskID++;
+        
     }
 
     public int getTaskID() {
@@ -55,9 +55,11 @@ public class History {
     
     public void addUserHistory(String tableName, String details){
         
-        History history = new History(taskID, tableName, details);
+        History history = new History(tableName, details);
         
         userHistory.add(history);
+        
+        currentTaskID++;
         
     }
     

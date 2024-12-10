@@ -68,7 +68,8 @@ public class regexvalidation {
         do {
             //this gets repeated
             System.out.println("Please enter your password: ");
-            System.out.println("~~uppercase letters, lower letters and numbers");
+            System.out.println("~~At least one upper case, one lower and a special character such as !@#$%");
+            System.out.println("Minimum of 8 characters required.");
             userPassword = myKB.nextLine(); //read in 1 line from keyboard
             
         }while (!userPassword.matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^!&+=]).{8,}$"));

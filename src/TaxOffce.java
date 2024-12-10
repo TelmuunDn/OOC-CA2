@@ -195,7 +195,7 @@ public class TaxOffce {
                             System.out.println("5. Review the database history");
                             System.out.println("6. Exit");
                             System.out.println("\nEnter your choice: \n");
-                            scanner.nextLine();
+                           
                             choice = regexvalidation.askForMenu();
                             
                             switch(choice){

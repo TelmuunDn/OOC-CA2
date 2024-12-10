@@ -32,9 +32,9 @@ public class AdminLogin extends DB_Connection{
 
 
                    System.out.println("\nPlease enter your Admin username:");
-                   adminName = regexvalidation.askForFirstName();
+                   adminName = regexvalidation.askForAdminLogin();
                    System.out.println("Please enter your Admin password:");
-                   adminPassword = regexvalidation.askForFirstName();
+                   adminPassword = regexvalidation.askForAdminLogin();
            
            
                     String sqlAdmin = String.format("SELECT * FROM " + TABLE2 + " WHERE admin_name = '%s' AND admin_password = '%s';",
