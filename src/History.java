@@ -16,7 +16,7 @@ import java.util.Date;
 public class History {
     private int taskID;
     private String tableName;
-    private String timeStamp = new SimpleDateFormat("yyyy/MM/dd....HH:mm:ss").format(new java.util.Date());
+    private String timeStamp = new SimpleDateFormat("yyyy/MM/dd--HH:mm:ss").format(new java.util.Date());
     private String details;
     private int currentTaskID =1;
     
@@ -25,7 +25,7 @@ public class History {
     public History(int taskID, String tableName, String details) {
         this.taskID = currentTaskID;
         this.tableName = tableName;
-        this.timeStamp = new SimpleDateFormat("yyyy/MM/dd....HH:mm:ss").format(new java.util.Date());
+        this.timeStamp = new SimpleDateFormat("yyyy/MM/dd--HH:mm:ss").format(new java.util.Date());
         this.details = details;
         
         currentTaskID++;
