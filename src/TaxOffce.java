@@ -54,7 +54,7 @@ public class TaxOffce {
 
                 
                 // capture the user choice 
-                choice = scanner.nextInt();
+                choice = regexvalidation.askForMenu();
                 
                 // take in the user choice ad provide a functionality according to the user selection
                 // theres going to be 3 options
@@ -87,27 +87,27 @@ public class TaxOffce {
                             System.out.println("3. Exit");
                             System.out.println("\nEnter your choice: \n");
                             scanner.nextLine();
-                            choice = scanner.nextInt();
+                            choice = regexvalidation.askForMenu();
                             
                             switch(choice){
                                 case 1:
                                     //insert new data to the db
                                     System.out.println("Enter user data");
                                     scanner.nextLine();
-                                    System.out.println("First Name:");
+                                    
                                     String firstName = regexvalidation.askForFirstName(); // name of the user
-                                    System.out.println("Last Name:");
+                                    
                                     String lastName = regexvalidation.askForSecondName();
 
-                                    System.out.println("Birthdate: YYYY-MM-DD format");
-                                    String birthDate = scanner.nextLine();
+                                    
+                                    String birthDate = regexvalidation.askForYear() +"-"+ regexvalidation.askForMonth() +"-"+ regexvalidation.askForDay();
                                     
                                     String email = ul.getEmail(); // we know the email for the user already, and it should not be changed because it is the username that is used for login
                                     
-                                    System.out.println("Password: ");
-                                    String password = scanner.nextLine();
-                                    System.out.println("Phone Number: ");
-                                    int phoneNumber = scanner.nextInt();
+                                    
+                                    String password = regexvalidation.askForPassword();
+                                    
+                                    int phoneNumber = regexvalidation.askForPhoneNumber();
                                     
                                     // collect all the user input
                                     User changeUser = new User(firstName,lastName, birthDate, email, phoneNumber, password);
@@ -125,7 +125,7 @@ public class TaxOffce {
                                     
                                 case 2:
                                     System.out.println("Please write your annual income: ");
-                                    double income = scanner.nextDouble();
+                                    double income = regexvalidation.askForIncome();
                                     taxcalculator tax = new taxcalculator();// calling the calculator
                                     System.out.println("~");
                                     System.out.println("Your USC (Universal Social Charge) is: "+ tax.getcalculatePRSI(income));
@@ -157,21 +157,12 @@ public class TaxOffce {
                     // since we know its a numbr the cases will be numbers
                     case 2: // if the user selects 2
                         //insert new data to the db
-                        System.out.println("Enter user data");
-                        scanner.nextLine();
-                        System.out.println("First Name:");
-                        String firstName = scanner.nextLine(); // name of the user
-                        System.out.println("Last Name:");
-                        String lastName = scanner.nextLine();
-                        
-                        System.out.println("Birthdate: YYYY-MM-DD format");
-                        String birthDate = scanner.nextLine();
-                        System.out.println("Email:");
-                        String email = scanner.nextLine();
-                        System.out.println("Password: ");
-                        String password = scanner.nextLine();
-                        System.out.println("Phone Number: ");
-                        int phoneNumber = scanner.nextInt();
+                        String firstName = regexvalidation.askForFirstName();// name of the user
+                        String lastName = regexvalidation.askForSecondName();
+                        String birthDate = regexvalidation.askForYear() +"-"+ regexvalidation.askForMonth() +"-"+ regexvalidation.askForDay();
+                        String email = regexvalidation.askForEmail();
+                        int phoneNumber = regexvalidation.askForPhoneNumber();
+                        String password = regexvalidation.askForPassword();
                         
                         
                         
@@ -204,7 +195,7 @@ public class TaxOffce {
                             System.out.println("6. Exit");
                             System.out.println("\nEnter your choice: \n");
                             scanner.nextLine();
-                            choice = scanner.nextInt();
+                            choice = regexvalidation.askForMenu();
                             
                             switch(choice){
                                 case 1:
@@ -241,23 +232,23 @@ public class TaxOffce {
                                     System.out.println("\nChanging user data...Please stand by");
                                     
                                     System.out.println("Please enter the USER ID of the target user:");
-                                    userID = scanner.nextInt();
+                                    userID = regexvalidation.askForMenu();
                                     //insert new data to the db
                                     System.out.println("Enter user data for user ID-" + userID);
                                     scanner.nextLine();
                                     System.out.println("Please enter the new First Name for user ID-" + userID);
-                                    firstName = scanner.nextLine(); // name of the user
+                                    firstName = regexvalidation.askForFirstName(); // name of the user
                                     System.out.println("Please enter the new Last Name for user ID-" + userID);
-                                    lastName = scanner.nextLine();
+                                    lastName = regexvalidation.askForSecondName();
                                     System.out.println("Please enter the new Birthdate for user ID-" + userID);
                                     System.out.println("Birthdate: YYYY-MM-DD format");
-                                    birthDate = scanner.nextLine();
+                                    birthDate = regexvalidation.askForYear() +"-"+ regexvalidation.askForMonth() +"-"+ regexvalidation.askForDay();
                                     System.out.println("Please enter the new Email for user ID-" + userID);
-                                    email = scanner.nextLine(); 
+                                    email = regexvalidation.askForEmail();
                                     System.out.println("Please enter the new Password for user ID-" + userID);
-                                    password = scanner.nextLine();
+                                    password = regexvalidation.askForPassword();
                                     System.out.println("Please enter the new Phone Number for user ID-" + userID);
-                                    phoneNumber = scanner.nextInt();
+                                    phoneNumber = regexvalidation.askForPhoneNumber();
                                     
                                     
                                     User userChange = new User(firstName,lastName, birthDate, email, phoneNumber, password);
@@ -267,7 +258,7 @@ public class TaxOffce {
                                         flag = false;
                                     }else{
                                         System.out.println("Unable to add user to table, please check all inputs, try again");
-                                        choice = scanner.nextInt();
+                                        choice = regexvalidation.askForMenu();
                                         flag = false;
                                     }
                                     
@@ -280,11 +271,11 @@ public class TaxOffce {
                                 case 3:
                                                                               
                                     System.out.println("Please insert the new Admin Username:");
-                                    scanner.nextLine();
-                                    String adminName = scanner.nextLine();
+                                    
+                                    String adminName = regexvalidation.askForFirstName();
                                     
                                     System.out.println("Please insert the new Admin Password:");
-                                    String adminPassword = scanner.nextLine();
+                                    String adminPassword = regexvalidation.askForFirstName();
                                     
                                     
                                     if(op.changeAdmin(adminName, adminPassword)){

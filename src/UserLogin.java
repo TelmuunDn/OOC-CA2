@@ -35,10 +35,10 @@ public class UserLogin extends DB_Connection{
                    
 
 
-                   System.out.println("\nPlease enter your email:");
-                   email = sc.nextLine();
-                   System.out.println("Please enter your password:");
-                   password = sc.nextLine();
+                   
+                   email = regexvalidation.askForEmail();
+                   
+                   password = regexvalidation.askForPassword();
            
            
                     String sqlUser = String.format("SELECT * FROM " + TABLE + " WHERE email = " + "'%s'" + " AND password = "
