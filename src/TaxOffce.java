@@ -115,6 +115,7 @@ public class TaxOffce {
                                     // check if successful otherwise let the user know
                                     if(op.changeUser(changeUser)){
                                         System.out.println("User information updated successfully");
+                                        hs.addUserHistory("user_data", "CHANGE USER DATA - Name: " + firstName +" "+ lastName + " DOB: " + birthDate + " Email: "+email + " PN: "+phoneNumber + " PWD: "+password);
                                         flag = false;
                                     }else{
                                         System.out.println("Unable to add user to table, please check all inputs, try again");
@@ -254,6 +255,7 @@ public class TaxOffce {
                                     User userChange = new User(firstName,lastName, birthDate, email, phoneNumber, password);
                                     
                                     if(op.changeUserByAdmin(userChange, userID)){
+                                        hs.addUserHistory("user_data", "CHANGE USER DATA BY ADMIN - Name: " + firstName +" "+ lastName + " DOB: " + birthDate + " Email: "+email + " PN: "+phoneNumber + " PWD: "+password);
                                         System.out.println("User information updated successfully");
                                         flag = false;
                                     }else{
@@ -272,15 +274,16 @@ public class TaxOffce {
                                                                               
                                     System.out.println("Please insert the new Admin Username:");
                                     
-                                    String adminName = regexvalidation.askForFirstName();
+                                    String adminName = regexvalidation.askForAdminLogin();
                                     
                                     System.out.println("Please insert the new Admin Password:");
-                                    String adminPassword = regexvalidation.askForFirstName();
+                                    String adminPassword = regexvalidation.askForAdminLogin();
                                     
                                     
                                     if(op.changeAdmin(adminName, adminPassword)){
                                         System.out.println("Your new username is: " + adminName);
                                         System.out.println("Your new password is: " + adminPassword);
+                                        hs.addUserHistory("admin_data", "CHANGE ADMIN DATA - Name: " +adminName + " Password: " + adminPassword);
                                     }else{
                                         System.out.println("Something went wrong, please try again!");}
                                     
@@ -289,10 +292,11 @@ public class TaxOffce {
                                     
                                 case 4:
                                     System.out.println("Please insert the User ID of the target to delete: ");
-                                    userID = scanner.nextInt();
+                                    userID = regexvalidation.askForMenu();
                                     
                                     if(op.removeUser(userID)){
                                         System.out.println(userID + " has been successfully deleted from the database...");
+                                        hs.addUserHistory("user_data", "DELETE USER FROM DATABASE BY ADMIN -- USER ID: " + userID);
                                     }else{
                                         System.out.println("Error, please check your input and try again...");
                                     }
@@ -300,7 +304,7 @@ public class TaxOffce {
                                     break;
                                     
                                 case 5:
-                                    System.out.println("work in progress 5");
+                                    
                                     hs.readUserHistory();
                                     flag = false;
                                     break;

@@ -365,6 +365,29 @@ public class regexvalidation {
         return day;
 
     }
+    
+    // #######################################################
+    // FIRST NAME VALIDATION
+    public static String askForAdminLogin() {
+        
+        Scanner myKB = new Scanner(System.in);
+        
+        String adminLogin;
+        
+        do {
+            //this gets repeated
+            
+            System.out.println("~~only letters");
+            adminLogin = myKB.nextLine(); //read in 1 line from keyboard
+
+        }while (!adminLogin.matches("[a-zA-Z .,?!\"]+"));
+        // at this point the loop guard is FALSE
+            
+        
+        return adminLogin;
+
+        
+    } 
 
 }   
 
