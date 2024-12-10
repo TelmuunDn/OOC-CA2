@@ -35,7 +35,10 @@ public class TaxOffce {
             UserLogin ul = new UserLogin(); // this will allow the users to login
             Scanner scanner = new Scanner(System.in); // this will capture the user input
             AdminLogin al = new AdminLogin();
+            Operation op= new Operation();
             
+            History hs = new History();
+            ArrayList<History> userHistory = new ArrayList<>();
             // we want to present the menu to the user and we want the user to interact as long as they please;
             
             do{
@@ -110,7 +113,7 @@ public class TaxOffce {
                                     User changeUser = new User(firstName,lastName, birthDate, email, phoneNumber, password);
                                     // try adding the patient record 
                                     // check if successful otherwise let the user know
-                                    if(dbw.changeUser(changeUser)){
+                                    if(op.changeUser(changeUser)){
                                         System.out.println("User information updated successfully");
                                         flag = false;
                                     }else{
@@ -178,6 +181,7 @@ public class TaxOffce {
                         // check if successful otherwise let the user know
                         if(dbw.addUser(newUser)){
                             System.out.println("User added successfully");
+                            hs.addUserHistory("user_data", "INSERT NEW USER - Name: " + firstName +" "+ lastName + " DOB: " + birthDate + " Email: "+email + " PN: "+phoneNumber + " PWD: "+password);
                             flag = false;
                         }else{
                             System.out.println("Unable to add user to table, please check all inputs, try again");
@@ -258,7 +262,7 @@ public class TaxOffce {
                                     
                                     User userChange = new User(firstName,lastName, birthDate, email, phoneNumber, password);
                                     
-                                    if(dbw.changeUserByAdmin(userChange, userID)){
+                                    if(op.changeUserByAdmin(userChange, userID)){
                                         System.out.println("User information updated successfully");
                                         flag = false;
                                     }else{
@@ -283,7 +287,7 @@ public class TaxOffce {
                                     String adminPassword = scanner.nextLine();
                                     
                                     
-                                    if(dbw.changeAdmin(adminName, adminPassword)){
+                                    if(op.changeAdmin(adminName, adminPassword)){
                                         System.out.println("Your new username is: " + adminName);
                                         System.out.println("Your new password is: " + adminPassword);
                                     }else{
@@ -296,7 +300,7 @@ public class TaxOffce {
                                     System.out.println("Please insert the User ID of the target to delete: ");
                                     userID = scanner.nextInt();
                                     
-                                    if(dbw.removeUser(userID)){
+                                    if(op.removeUser(userID)){
                                         System.out.println(userID + " has been successfully deleted from the database...");
                                     }else{
                                         System.out.println("Error, please check your input and try again...");
@@ -306,6 +310,7 @@ public class TaxOffce {
                                     
                                 case 5:
                                     System.out.println("work in progress 5");
+                                    hs.readUserHistory();
                                     flag = false;
                                     break;
                                     
