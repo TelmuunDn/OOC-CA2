@@ -86,14 +86,14 @@ public class TaxOffce {
                             System.out.println("2. Enter the tax calculator");
                             System.out.println("3. Exit");
                             System.out.println("\nEnter your choice: \n");
-                            scanner.nextLine();
+                            
                             choice = regexvalidation.askForMenu();
                             
                             switch(choice){
                                 case 1:
                                     //insert new data to the db
                                     System.out.println("Enter user data");
-                                    scanner.nextLine();
+                                    
                                     
                                     String firstName = regexvalidation.askForFirstName(); // name of the user
                                     
@@ -182,174 +182,174 @@ public class TaxOffce {
                         } 
                         break;
                         
-                        case 3:
-                        
-                        // to make an admin action here
-                            if(al.AdminLoginAction()){
-                        
-                            System.out.println("\nWelcome to the admin menu, please choose from below:\n");
-                            System.out.println("1. List all users and their information");
-                            System.out.println("2. Change user information");
-                            System.out.println("3. Change admin information");
-                            System.out.println("4. Remove a user from the system");
-                            System.out.println("5. Review the database history");
-                            System.out.println("6. Exit");
-                            System.out.println("\nEnter your choice: \n");
-                           
-                            choice = regexvalidation.askForMenu();
-                            
-                            switch(choice){
-                                case 1:
-                                    // read the data from the db
-                                    ArrayList<User> users = dbr.getAllData();
-                                    // retreive the data from the db, store it as the patients arraylist;
+                    case 3:
 
-                                    //check if empty
-                                    if(users.isEmpty()){
-                                        System.out.println("No data was found");
-                                        
-                                    }else{
-                                        System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s", "\nID", "First Name", "Last Name", "Birth Date", "Email", "Phone Number", "Password");
-                                        System.out.println("\n----------------------------------------------------------------------------------------");
-                                        // print out all the patient records in to the table
-                                        // this will require iterating  therough the patients arraylist
-                                        for(User user: users){
-                                            System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s\n", 
-                                                    user.getUserID(),
-                                                    user.getFirstName(),
-                                                    user.getLastName(),
-                                                    user.getBirthDate(),
-                                                    user.getEmail(),
-                                                    user.getPhoneNumber(), 
-                                                    user.getPassword()
-                                            );
-                                        }   
-                                    }
-                                    flag = false;
-                                    break;
+                    
+                        if(al.AdminLoginAction()){
+
+                        System.out.println("\nWelcome to the admin menu, please choose from below:\n");
+                        System.out.println("1. List all users and their information");
+                        System.out.println("2. Change user information");
+                        System.out.println("3. Change admin information");
+                        System.out.println("4. Remove a user from the system");
+                        System.out.println("5. Review the database history");
+                        System.out.println("6. Exit");
+                        System.out.println("\nEnter your choice: \n");
+
+                        choice = regexvalidation.askForMenu();
+
+                        switch(choice){
+                            case 1:
+                                // read the data from the db
+                                ArrayList<User> users = dbr.getAllData();
+                                // retreive the data from the db, store it as the patients arraylist;
+
+                                //check if empty
+                                if(users.isEmpty()){
+                                    System.out.println("No data was found");
+
+                                }else{
+                                    System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s", "\nID", "First Name", "Last Name", "Birth Date", "Email", "Phone Number", "Password");
+                                    System.out.println("\n----------------------------------------------------------------------------------------");
+                                    // print out all the patient records in to the table
+                                    // this will require iterating  therough the patients arraylist
+                                    for(User user: users){
+                                        System.out.printf("%-5s | %-10s | %-10s | %-12s | %-25s | %-15s | %-20s\n", 
+                                                user.getUserID(),
+                                                user.getFirstName(),
+                                                user.getLastName(),
+                                                user.getBirthDate(),
+                                                user.getEmail(),
+                                                user.getPhoneNumber(), 
+                                                user.getPassword()
+                                        );
+                                    }   
+                                }
+                                flag = false;
+                                break;
+
+                            case 2:
+                                int userID;
+                                System.out.println("\nChanging user data...Please stand by");
+
+                                System.out.println("Please enter the USER ID of the target user:");
+                                userID = regexvalidation.askForMenu();
+                                //insert new data to the db
+                                System.out.println("Enter user data for user ID-" + userID);
                                 
-                                case 2:
-                                    int userID;
-                                    System.out.println("\nChanging user data...Please stand by");
-                                    
-                                    System.out.println("Please enter the USER ID of the target user:");
-                                    userID = regexvalidation.askForMenu();
-                                    //insert new data to the db
-                                    System.out.println("Enter user data for user ID-" + userID);
-                                    scanner.nextLine();
-                                    System.out.println("Please enter the new First Name for user ID-" + userID);
-                                    firstName = regexvalidation.askForFirstName(); // name of the user
-                                    System.out.println("Please enter the new Last Name for user ID-" + userID);
-                                    lastName = regexvalidation.askForSecondName();
-                                    System.out.println("Please enter the new Birthdate for user ID-" + userID);
-                                    System.out.println("Birthdate: YYYY-MM-DD format");
-                                    birthDate = regexvalidation.askForYear() +"-"+ regexvalidation.askForMonth() +"-"+ regexvalidation.askForDay();
-                                    System.out.println("Please enter the new Email for user ID-" + userID);
-                                    email = regexvalidation.askForEmail();
-                                    System.out.println("Please enter the new Password for user ID-" + userID);
-                                    password = regexvalidation.askForPassword();
-                                    System.out.println("Please enter the new Phone Number for user ID-" + userID);
-                                    phoneNumber = regexvalidation.askForPhoneNumber();
-                                    
-                                    
-                                    User userChange = new User(firstName,lastName, birthDate, email, phoneNumber, password);
-                                    
-                                    if(op.changeUserByAdmin(userChange, userID)){
-                                        hs.addUserHistory("user_data", "CHANGE USER DATA BY ADMIN - Name: " + firstName +" "+ lastName + " DOB: " + birthDate + " Email: "+email + " PN: "+phoneNumber + " PWD: "+password);
-                                        System.out.println("User information updated successfully");
-                                        flag = false;
-                                    }else{
-                                        System.out.println("Unable to add user to table, please check all inputs, try again");
-                                        choice = regexvalidation.askForMenu();
-                                        flag = false;
-                                    }
-                                    
-                                    
-                                    
-                                    
-                                    flag = false;
-                                    break;
-                                    
-                                case 3:
-                                                                              
-                                    System.out.println("Please insert the new Admin Username:");
-                                    
-                                    String adminName = regexvalidation.askForAdminLogin();
-                                    
-                                    System.out.println("Please insert the new Admin Password:");
-                                    String adminPassword = regexvalidation.askForAdminLogin();
-                                    
-                                    
-                                    if(op.changeAdmin(adminName, adminPassword)){
-                                        System.out.println("Your new username is: " + adminName);
-                                        System.out.println("Your new password is: " + adminPassword);
-                                        hs.addUserHistory("admin_data", "CHANGE ADMIN DATA - Name: " +adminName + " Password: " + adminPassword);
-                                    }else{
-                                        System.out.println("Something went wrong, please try again!");}
-                                    
-                                    flag = false;
-                                    break;
-                                    
-                                case 4:
-                                    System.out.println("Please insert the User ID of the target to delete: ");
-                                    userID = regexvalidation.askForMenu();
-                                    
-                                    if(op.removeUser(userID)){
-                                        System.out.println(userID + " has been successfully deleted from the database...");
-                                        hs.addUserHistory("user_data", "DELETE USER FROM DATABASE BY ADMIN -- USER ID: " + userID);
-                                    }else{
-                                        System.out.println("Error, please check your input and try again...");
-                                    }
-                                    flag = false;
-                                    break;
-                                    
-                                case 5:
-                                    
-                                    hs.readUserHistory();
-                                    flag = false;
-                                    break;
-                                    
-                                case 6:
-                                    // exit
-                                    System.out.println("Thank you for using our system");
-                                    System.out.println("Returning to main menu....");
-                                    flag = false;
-                                    break;
+                                System.out.println("Please enter the new First Name for user ID-" + userID);
+                                firstName = regexvalidation.askForFirstName(); // name of the user
+                                System.out.println("Please enter the new Last Name for user ID-" + userID);
+                                lastName = regexvalidation.askForSecondName();
+                                System.out.println("Please enter the new Birthdate for user ID-" + userID);
+                                System.out.println("Birthdate: YYYY-MM-DD format");
+                                birthDate = regexvalidation.askForYear() +"-"+ regexvalidation.askForMonth() +"-"+ regexvalidation.askForDay();
+                                System.out.println("Please enter the new Email for user ID-" + userID);
+                                email = regexvalidation.askForEmail();
+                                System.out.println("Please enter the new Password for user ID-" + userID);
+                                password = regexvalidation.askForPassword();
+                                System.out.println("Please enter the new Phone Number for user ID-" + userID);
+                                phoneNumber = regexvalidation.askForPhoneNumber();
 
-                                default:
-                                    System.out.println("Wrong input, please select form the menu choices");
-                                    flag = false;
 
-                            }
-                            }else{
-                            
-                            System.out.println("TRY AGAIN!");
-                            flag = false;
+                                User userChange = new User(firstName,lastName, birthDate, email, phoneNumber, password);
+
+                                if(op.changeUserByAdmin(userChange, userID)){
+                                    hs.addUserHistory("user_data", "CHANGE USER DATA BY ADMIN - Name: " + firstName +" "+ lastName + " DOB: " + birthDate + " Email: "+email + " PN: "+phoneNumber + " PWD: "+password);
+                                    System.out.println("User information updated successfully");
+                                    flag = false;
+                                }else{
+                                    System.out.println("Unable to add user to table, please check all inputs, try again");
+                                    choice = regexvalidation.askForMenu();
+                                    flag = false;
+                                }
+
+
+
+
+                                flag = false;
+                                break;
+
+                            case 3:
+
+                                System.out.println("Please insert the new Admin Username:");
+
+                                String adminName = regexvalidation.askForAdminLogin();
+
+                                System.out.println("Please insert the new Admin Password:");
+                                String adminPassword = regexvalidation.askForAdminLogin();
+
+
+                                if(op.changeAdmin(adminName, adminPassword)){
+                                    System.out.println("Your new username is: " + adminName);
+                                    System.out.println("Your new password is: " + adminPassword);
+                                    hs.addUserHistory("admin_data", "CHANGE ADMIN DATA - Name: " +adminName + " Password: " + adminPassword);
+                                }else{
+                                    System.out.println("Something went wrong, please try again!");}
+
+                                flag = false;
+                                break;
+
+                            case 4:
+                                System.out.println("Please insert the User ID of the target to delete: ");
+                                userID = regexvalidation.askForMenu();
+
+                                if(op.removeUser(userID)){
+                                    System.out.println(userID + " has been successfully deleted from the database...");
+                                    hs.addUserHistory("user_data", "DELETE USER FROM DATABASE BY ADMIN -- USER ID: " + userID);
+                                }else{
+                                    System.out.println("Error, please check your input and try again...");
+                                }
+                                flag = false;
+                                break;
+
+                            case 5:
+
+                                hs.readUserHistory();
+                                flag = false;
+                                break;
+
+                            case 6:
+                                // exit
+                                System.out.println("Thank you for using our system");
+                                System.out.println("Returning to main menu....");
+                                flag = false;
+                                break;
+
+                            default:
+                                System.out.println("Wrong input, please select form the menu choices");
+                                flag = false;
+
                         }
-                        break;
-                        
- 
-                        
-                    case 4:
-                        // exit
-                        System.out.println("Thank you for using our system");
-                        System.out.println("Exiting....");
-                        scanner.close(); // scanner is our IO stream we dont want the user to be able to interact with the system when its closed
-                        return;
-                        
-                    default:
-                        System.out.println("Wrong input, please select form the menu choices");
-                        flag = false;
-                
-                }
- 
-            }while(!flag);
+                        }else{
 
-        }else{
-            // there is an issue connecting to the db or creating the schema
-            System.out.println("There was a problem creating or connecting to the db... \n Please check db credentials");
-        }
+                        System.out.println("TRY AGAIN!");
+                        flag = false;
+                    }
+                    break;
+
+
+
+                case 4:
+                    // exit
+                    System.out.println("Thank you for using our system");
+                    System.out.println("Exiting....");
+                    scanner.close(); // scanner is our IO stream we dont want the user to be able to interact with the system when its closed
+                    return;
+
+                default:
+                    System.out.println("Wrong input, please select form the menu choices");
+                    flag = false;
+
+            }
+
+        }while(!flag);
+
+    }else{
+        // there is an issue connecting to the db or creating the schema
+        System.out.println("There was a problem creating or connecting to the db... \n Please check db credentials");
     }
+}
 }
 
 
