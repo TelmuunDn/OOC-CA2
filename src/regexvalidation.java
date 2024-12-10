@@ -89,24 +89,47 @@ public class regexvalidation {
     
     // #######################################################
     // PHONE NUMBER VALIDATION 
-    public static String askForPhoneNumber() {
+    public static int askForPhoneNumber() {
         
         Scanner myKB = new Scanner(System.in);
         
-        String userPhone;
+        int userPhone = 0;
+        boolean flag = true;
         
         do {
-            //this gets repeated
-            System.out.println("Please enter your phonenumber: ");
-            System.out.println("~~Only 9 numbers, example 861231234");
-            userPhone= myKB.nextLine(); //read in 1 line from keyboard
             
-        }while (!userPhone.matches("\\d{9}"));
+            try{
+                //this gets repeated
+                System.out.println("Please enter your phonenumber: ");
+                System.out.println("~~Only 9 numbers, example 861231234");
+                userPhone = myKB.nextInt();
+                String num = String.valueOf(userPhone);
+                if(num.matches("9")){
+                   userPhone = Integer.valueOf(num);
+                    flag = true;
 
-        
+                }else{
+
+                    System.out.println("Only nine numbers");
+                    myKB.nextLine();
+                    flag = false;
+
+                }             
+            }catch(Exception e){
+            
+                System.out.println("No letters, example 123456789");
+                myKB.nextLine();
+                flag = false;
+            
+            }
+
+        }while(!flag);
+        // at this point the loop guard is FALSE
+          
     return userPhone;
         
     } 
+    
     
     // #######################################################
     // EMAIL VALIDATION

@@ -23,7 +23,7 @@ public class TaxOffce {
         boolean flag = true;
         
         // using the db setup class we can check if the operation went ok
-        if(DatabaseSetup.setupDB() ){
+//        if(DatabaseSetup.setupDB() ){
             // if after we run the setupdb method all is ok
             // we have now created a db schem and created a table
             
@@ -158,21 +158,14 @@ public class TaxOffce {
                     case 2: // if the user selects 2
                         //insert new data to the db
                         System.out.println("Enter user data");
-                        scanner.nextLine();
-                        System.out.println("First Name:");
-                        String firstName = scanner.nextLine(); // name of the user
-                        System.out.println("Last Name:");
-                        String lastName = scanner.nextLine();
                         
-                        System.out.println("Birthdate: YYYY-MM-DD format");
-                        String birthDate = scanner.nextLine();
-                        System.out.println("Email:");
-                        String email = scanner.nextLine();
-                        System.out.println("Password: ");
-                        String password = scanner.nextLine();
-                        System.out.println("Phone Number: ");
-                        int phoneNumber = scanner.nextInt();
-                        
+//                       
+                        String firstName = regexvalidation.askForFirstName();// name of the user
+                        String lastName = regexvalidation.askForSecondName();
+                        String birthDate = regexvalidation.askForYear() +"-"+ regexvalidation.askForMonth() +"-"+ regexvalidation.askForDay();
+                        String email = regexvalidation.askForEmail();
+                        int phoneNumber = regexvalidation.askForPhoneNumber();
+                        String password = regexvalidation.askForPassword();
                         
                         
                         // collect all the user input
@@ -350,10 +343,10 @@ public class TaxOffce {
  
             }while(!flag);
 
-        }else{
-            // there is an issue connecting to the db or creating the schema
-            System.out.println("There was a problem creating or connecting to the db... \n Please check db credentials");
-        }
+//        }else{
+//            // there is an issue connecting to the db or creating the schema
+//            System.out.println("There was a problem creating or connecting to the db... \n Please check db credentials");
+//        }
     }
 }
 
