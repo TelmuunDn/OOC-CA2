@@ -12,10 +12,13 @@ import java.util.Scanner;
  */
 public class regexvalidation {
     
-   
-    // #######################################################
-    // FIRST NAME VALIDATION
-    public static String askForFirstName() {
+    /**
+    * simple code to ask user to enter the first name
+    * do not allow numbers at all
+    * if any numbers entered - display an error and ask again
+    * @return the user first name as String
+    */
+    public static String askForFirstName() { // FIRST NAME VALIDATION
         
         Scanner myKB = new Scanner(System.in);
         
@@ -35,10 +38,14 @@ public class regexvalidation {
 
         
     } 
-    
-    // #######################################################
-    // SECOND NAME VALIDATION
-    public static String askForSecondName() {
+
+    /**
+    * simple code to ask user to enter the second name
+    * do not allow numbers at all
+    * if any numbers entered - display an error and ask again
+    * @return the user second name as String
+    */
+    public static String askForSecondName() { // SECOND NAME VALIDATION
         
         Scanner myKB = new Scanner(System.in);
         
@@ -57,9 +64,13 @@ public class regexvalidation {
         
     } 
       
-    // #######################################################
-    // PASSWORD VALIDATION
-    public static String askForPassword() {
+    /**
+    * simple code to ask user to enter the password
+    * only allows capital letters, lower case and some symbols @#$%^!&+=
+    * if any the password does not match - display an error and ask again
+    * @return the password as String
+    */
+    public static String askForPassword() { // PASSWORD VALIDATION
         
         Scanner myKB = new Scanner(System.in);
         
@@ -88,9 +99,13 @@ public class regexvalidation {
         
     } 
     
-    // #######################################################
-    // PHONE NUMBER VALIDATION 
-    public static int askForPhoneNumber() {
+    /**
+    * simple code to ask user to enter the phone number
+    * do not allow letters at all, and only 9 numbers
+    * if any letter entered - display an error and ask again
+    * @return the user phone number as integer
+    */
+    public static int askForPhoneNumber() { // PHONE NUMBER VALDATION
         
         Scanner myKB = new Scanner(System.in);
         
@@ -130,9 +145,13 @@ public class regexvalidation {
         
     return userPhone;}
     
-    // #######################################################
-    // EMAIL VALIDATION
-    public static String askForEmail() {
+    /**
+    * simple code to ask user to enter the email
+    * only allow email format with @
+    * if does not have the @  - display an error and ask again
+    * @return the user email as String
+    */
+    public static String askForEmail() { // EMAIL VALIDATION
         
         Scanner myKB = new Scanner(System.in);
         
@@ -153,10 +172,13 @@ public class regexvalidation {
         
     } 
     
-    // #######################################################
-    // DAY OF BIRTHDAY VALIDATION
-    
-    public static String askForYear() {
+    /**
+    * simple code to ask user to enter the year of birthday
+    * do not allow letters at all and only four numbers
+    * if any letter or less than four numbers entered - display an error and ask again
+    * @return the user year of birthday as String
+    */
+    public static String askForYear() { // YEAR OF BIRTHDAY VALIDATION
         
         Scanner myKB = new Scanner(System.in);
         int userYear;
@@ -199,8 +221,14 @@ public class regexvalidation {
 
         
     }   
-     
-    public static String askForMonth() {
+    
+    /**
+    * simple code to ask user to enter the month of birthday
+    * do not allow letter at all and only two numbers
+    * if any letter entered - display an error and ask again
+    * @return the user month of birthday as String
+    */
+    public static String askForMonth() { // MONTH OF BIRTHDAY VALIDATION
         
         
         Scanner myKB = new Scanner(System.in);
@@ -243,80 +271,14 @@ public class regexvalidation {
         return month;
   
     } 
-          
-    public static int askForMenu() {
-     
-        Scanner myKB = new Scanner(System.in);
-        int userChoice = 0;
-        boolean flag = true;
-        
-        do {
-            
-            try{
-                userChoice = myKB.nextInt();
-                
-                if((userChoice <= 6)&&(userChoice >= 1)){
-                   
-                    flag = true;
-
-                }else{
-
-                    System.out.println("Only numbers from 1 to 6");
-                    myKB.nextLine();
-                    flag = false;
-
-                } 
-            }catch(Exception e){
-            
-                System.out.println("Only numbers allows");
-                myKB.nextLine();
-                flag = false;
-            
-            }
-
-        }while(!flag);
-        // at this point the loop guard is FALSE
-        
-        return userChoice;}
     
-    
-    public static double askForIncome() {
-     
-        Scanner myKB = new Scanner(System.in);
-        double userIncome = 0;
-        boolean flag = true;
-        
-        do {
-            
-            try{
-                userIncome = myKB.nextInt();
-                
-                if(userIncome >= 0){
-                   
-                    flag = true;
-
-                }else{
-
-                    System.out.println("Only numbers.");
-                    myKB.nextLine();
-                    flag = false;
-
-                } 
-            }catch(Exception e){
-            
-                System.out.println("Only numbers allows");
-                myKB.nextLine();
-                flag = false;
-            
-            }
-
-        }while(!flag);
-        // at this point the loop guard is FALSE
-        
-        return userIncome;}
-    
-    
-    public static String askForDay() {
+    /**
+    * simple code to ask user to enter the day of birthday
+    * do not allow letters at all and only two numbers
+    * if any letter entered - display an error and ask again
+    * @return the user day of birthday as String
+    */      
+    public static String askForDay() { // DAY OF BIRTHDAY VALIDATION
         
         
         Scanner myKB = new Scanner(System.in);
@@ -365,11 +327,97 @@ public class regexvalidation {
         
         return day;
 
-    }
+    } 
     
-    // #######################################################
-    // FIRST NAME VALIDATION
-    public static String askForAdminLogin() {
+    /**
+    * simple code to ask user to enter the menu option
+    * do not allow letters at all
+    * if any letter or more than number 6 entered - display an error and ask again
+    * @return the user menu choice as integer
+    */
+    public static int askForMenu() { // VALIDATION FOR MENU CHOICE NUMBER
+     
+        Scanner myKB = new Scanner(System.in);
+        int userChoice = 0;
+        boolean flag = true;
+        
+        do {
+            
+            try{
+                userChoice = myKB.nextInt();
+                
+                if((userChoice <= 6)&&(userChoice >= 1)){
+                   
+                    flag = true;
+
+                }else{
+
+                    System.out.println("Only numbers from 1 to 6");
+                    myKB.nextLine();
+                    flag = false;
+
+                } 
+            }catch(Exception e){
+            
+                System.out.println("Only numbers allows");
+                myKB.nextLine();
+                flag = false;
+            
+            }
+
+        }while(!flag);
+        // at this point the loop guard is FALSE
+        
+        return userChoice;}
+    
+        /**
+    * simple code to ask user to enter their year income
+    * do not allow letters at all
+    * if any letter entered - display an error and ask again
+    * @return the user income as double
+    */ 
+    public static double askForIncome() { // VALIDATION FOR INCOME VALUE
+     
+        Scanner myKB = new Scanner(System.in);
+        double userIncome = 0;
+        boolean flag = true;
+        
+        do {
+            
+            try{
+                userIncome = myKB.nextInt();
+                
+                if(userIncome >= 0){
+                   
+                    flag = true;
+
+                }else{
+
+                    System.out.println("Only numbers.");
+                    myKB.nextLine();
+                    flag = false;
+
+                } 
+            }catch(Exception e){
+            
+                System.out.println("Only numbers allows");
+                myKB.nextLine();
+                flag = false;
+            
+            }
+
+        }while(!flag);
+        // at this point the loop guard is FALSE
+        
+        return userIncome;}
+    
+    /**
+    * simple code to ask user to enter the admin login
+    * do not allow numbers at all
+    * if any numbers entered - display an error and ask again
+    * @return the admin login as String
+    */
+    public static String askForAdminLogin() { // VALIDATION FOR ADMIN LOGIN
         
         Scanner myKB = new Scanner(System.in);
         
@@ -387,7 +435,6 @@ public class regexvalidation {
         
         return adminLogin;
 
-        
     } 
 
 }   
