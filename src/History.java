@@ -23,7 +23,7 @@ public class History {
     private String timeStamp = new SimpleDateFormat("yyyy/MM/dd--HH:mm:ss").format(new java.util.Date());
     // timestamp variables that will record when exactly the change was made.
     private String details;
-    private int currentTaskID =1;
+    private static int currentTaskID =1;
     // current task to keep track of our task ID and increment them when required
     
     
@@ -33,7 +33,7 @@ public class History {
         this.tableName = tableName;
         this.timeStamp = new SimpleDateFormat("yyyy/MM/dd--HH:mm:ss").format(new java.util.Date());
         this.details = details;
-        currentTaskID++;
+        
     }
         // a second constructor to be used in the collection and store the table name and details data
     public History(String tableName, String details) {
@@ -41,7 +41,7 @@ public class History {
         this.tableName = tableName;
         this.timeStamp = new SimpleDateFormat("yyyy/MM/dd--HH:mm:ss").format(new java.util.Date());
         this.details = details;
-        currentTaskID++;
+        
         
     }
 

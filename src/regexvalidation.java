@@ -244,9 +244,14 @@ public class regexvalidation {
                 System.out.println("~~only 2 numbers");
                 userMonth = myKB.nextInt();//read in 1 line from keyboard
                 int length = String.valueOf(userMonth).length();
+                
 
                 if((userMonth >= 1)&&(userMonth <= 12)&&(length == 2)){
                     month = String.valueOf(userMonth);
+                    flag = true;
+
+                }else if((userMonth >= 1)&&(userMonth <= 9)&&(length == 1)){
+                    month =  "0" +String.valueOf(userMonth);
                     flag = true;
 
                 }else{
@@ -306,6 +311,10 @@ public class regexvalidation {
                     day = String.valueOf(userDay);
                     flag = true;
 
+                }else if((userDay >= 1)&&(userDay <= 9)&&(length == 1)){
+                    day = "0" + String.valueOf(userDay);
+                    flag = true;
+                    
                 }else{
 
                     System.out.println("Only days of the month, example 05");
